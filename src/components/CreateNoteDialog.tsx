@@ -3,12 +3,38 @@ import React from 'react'
 import { Dialog, DialogHeader, DialogTitle, DialogTrigger, DialogContent, DialogDescription } from './ui/dialog';
 import { Plus } from 'lucide-react';
 import { Input } from './ui/input';
+import axios from 'axios';
 import { Button } from './ui/button';
+import { useMutation } from '@tanstack/react-query';
 
 type Props = {}
 
 const CreateNoteDialog = (props: Props) => {
-    const [input, setInput] = React.useState('')
+    const [input, setInput] = React.useState('');
+    const createNotebook = useMutation({
+        mutationFn: async () => {
+            const response = await axios.post('/api/createNoteBook', {
+                name: input
+            })
+            return response.data
+        }
+    })
+    
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (input === '') {
+            window.alert('Please enter a name for your notebook')
+            return
+        }
+        createNotebook.mutate(undefined, {
+            onSuccess: () => {
+                console.log('Success! Note created')
+            },
+            onError: error => {
+                console.error(error)
+            },
+        });
+    }
   return (
     <Dialog>
         <DialogTrigger>
@@ -26,7 +52,7 @@ const CreateNoteDialog = (props: Props) => {
                     You can create a new note by clicking the button below.
                 </DialogDescription>
             </DialogHeader>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Name...'/>
                 <div className="h-4"></div>
                 <div className="flex items-center gap-2">
