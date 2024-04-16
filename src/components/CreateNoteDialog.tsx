@@ -1,15 +1,17 @@
 'use client';
 import React from 'react'
 import { Dialog, DialogHeader, DialogTitle, DialogTrigger, DialogContent, DialogDescription } from './ui/dialog';
-import { Plus } from 'lucide-react';
+import { Loader, Loader2, Plus } from 'lucide-react';
 import { Input } from './ui/input';
 import axios from 'axios';
 import { Button } from './ui/button';
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 
 type Props = {}
 
 const CreateNoteDialog = (props: Props) => {
+    const router = useRouter();
     const [input, setInput] = React.useState('');
     const createNotebook = useMutation({
         mutationFn: async () => {
@@ -27,11 +29,13 @@ const CreateNoteDialog = (props: Props) => {
             return
         }
         createNotebook.mutate(undefined, {
-            onSuccess: () => {
-                console.log('Success! Note created')
+            onSuccess: ({note_id}) => {
+                console.log("created new note:", {note_id})
+                router.push(`/notebook/${note_id}`)
             },
             onError: error => {
                 console.error(error)
+                window.alert("Failed to create a new notebook")
             },
         });
     }
@@ -57,7 +61,12 @@ const CreateNoteDialog = (props: Props) => {
                 <div className="h-4"></div>
                 <div className="flex items-center gap-2">
                     <Button type='reset' variant={'secondary'}>Cancel</Button>
-                    <Button className='bg-green-600'>Create</Button>
+                    <Button type='submit' className='bg-green-600' disabled={createNotebook.isPending}>
+                        {createNotebook.isPending && (
+                            <Loader2 className='wi-4 h-4 mr-2 animate-spin'/>
+                        )}
+                        Create
+                        </Button>
                 </div>
             </form>
         </DialogContent>

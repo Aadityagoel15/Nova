@@ -20,7 +20,7 @@ export async function POST(req: Request){
         return new NextResponse('Failed to generate image', {status:500});
     }
 
-    const note_ids = await db.insert($notes).values({
+    const note_ids = await db.insert($notes).values({  //create a new row in database
         name,
         userId,
         imageUrl: image_url,
