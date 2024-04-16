@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { UserButton } from '@clerk/nextjs';
 import { Separator } from '@/components/ui/separator';
+import CreateNoteDialog from '@/components/CreateNoteDialog';
 
 type Props = {}
 
@@ -36,6 +37,10 @@ const DashboardPage = (props: Props) => {
                     {/*TODO conditionally rendered*/}
                     <div className='text-center'>
                         <h2 className='text-xl text-gray-500 font-bold'>You have no notes yet</h2>
+                    </div>
+
+                    <div className='grid sm:grid-cols-3 md:grid-cols-5 grid-cols-1 gap-3'>
+                        <CreateNoteDialog/>
                     </div>
                 </div>
             </div>
