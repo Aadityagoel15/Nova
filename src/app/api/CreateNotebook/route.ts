@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs"
 import { NextResponse } from "next/server"
 
 export async function POST(req: Request){
-    const {userId} = auth()
+    const {userId} = await auth()
     if(!userId){
         return new NextResponse('unauthorised', {status:401})
     }
@@ -25,7 +25,7 @@ export async function POST(req: Request){
         userId,
         imageUrl: image_url,
     }).returning({
-        insertedId: $notes.id
+        insertedId: $notes.id,
     });
     
     return NextResponse.json({

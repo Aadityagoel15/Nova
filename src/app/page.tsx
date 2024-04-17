@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="grainy">
-      <div className="flex flex-col h-[256vh]">
+      <div className="flex flex-col h-[550h]">
         <div className="flex-1">
           <div className="mx-auto flex flex-col items-center justify-center p-4 text-center my-40">
             <div className="space-y-2">
