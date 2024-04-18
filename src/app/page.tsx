@@ -3,10 +3,13 @@ import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
   return (
-    <div className="grainy">
+    <div className="">
+      <Navbar />
       <div className="flex flex-col h-[550h]">
         <div className="flex-1">
           <div className="mx-auto flex flex-col items-center justify-center p-4 text-center my-40">
@@ -32,8 +35,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex h-44 justify-center items-center text-center font-bold text-7xl ">About Nova</div>
         </div>
+        <div className="flex h-44 justify-center items-center text-center font-bold text-7xl ">About Nova</div>
         <div className="w-full max-w-7xl mx-auto border-t-2">
           <div className="grid items-center gap-6 p-4 md:grid-cols-1 md:gap-10 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
             <div className="space-y-2">
@@ -100,6 +103,19 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="h-20"></div>
+      <FAQSection />
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-slate-200">
+        <p className="text-xs text-gray-500 dark:text-gray-400">© Nova.</p>
+        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+          <Link className="text-xs hover:underline underline-offset-4" href="#">
+            Terms of Service
+          </Link>
+          <Link className="text-xs hover:underline underline-offset-4" href="#">
+            Privacy
+          </Link>
+        </nav>
+      </footer>
     </div>
   );
 }
