@@ -22,8 +22,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const glassmorphismStyle = {
+    backgroundColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.5)',
+    backdropFilter: theme === 'dark' ? 'blur(8px)' : 'blur(10px)',
+  };
+
   return (
-    <div className={`flex justify-between items-center p-3 px-4 lg:px-6 h-14 fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${isSticky ? "bg-slate-100/70 backdrop-blur-md shadow-sm" : ""}`}>
+    <div className={`flex justify-between items-center p-3 px-4 lg:px-6 h-14 fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${isSticky ? "bg-slate-100/70 backdrop-blur-md shadow-sm" : ""}`} style={glassmorphismStyle}>
       <div>
         <Link href='/dashboard'>
           <div className={`font-bold font-serif text-3xl ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
@@ -49,6 +54,7 @@ export default function Navbar() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        
         <UserButton />
       </div>
     </div>

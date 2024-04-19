@@ -40,7 +40,7 @@ import {
                 <AccordionTrigger>{faq.question}</AccordionTrigger>
                 <AccordionContent>{faq.answer}</AccordionContent>
               </AccordionItem>
-            ))}
+            ))} 
           </Accordion>
         </div>
       </section>
