@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
@@ -10,6 +10,7 @@ import Text from "@tiptap/extension-text";
 import axios from "axios";
 import { NoteType } from "@/lib/db/schema";
 import { useCompletion } from "ai/react";
+import { useTheme } from "next-themes";
 
 type Props = { note: NoteType };
 
@@ -34,7 +35,7 @@ const TipTapEditor = ({ note }: Props) => {
       return {
         "Shift-a": () => {
           // take the last 30 words
-          const prompt = this.editor.getText().split(" ").slice(-30).join(" ");
+          const prompt = this.editor.getText().split(" ").slice(-40).join(" ");
           complete(prompt);
           return true;
         },
@@ -72,6 +73,9 @@ const TipTapEditor = ({ note }: Props) => {
       },
     });
   }, [debouncedEditorState]);
+
+  const { theme } = useTheme(); // Get the current theme
+
   return (
     <>
       <div className="flex">
@@ -81,7 +85,7 @@ const TipTapEditor = ({ note }: Props) => {
         </Button>
       </div>
 
-      <div className="prose prose-sm w-full mt-4">
+      <div className={`prose prose-sm w-full mt-4 ${theme === "dark" ? "text-white" : "text-black"}`}>
         <EditorContent editor={editor} />
       </div>
       <div className="h-4"></div>

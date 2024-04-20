@@ -2,7 +2,6 @@ import { Editor } from "@tiptap/react";
 import {
   Bold,
   Code,
-  CodepenIcon,
   Heading1,
   Heading2,
   Heading3,
@@ -96,12 +95,6 @@ const TipTapMenuBar = ({ editor }: { editor: Editor }) => {
         className={editor.isActive("orderedList") ? "is-active" : ""}
       >
         <ListOrdered className="w-6 h-6" />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-        className={editor.isActive("codeBlock") ? "is-active" : ""}
-      >
-        <CodepenIcon className="w-6 h-6" />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
