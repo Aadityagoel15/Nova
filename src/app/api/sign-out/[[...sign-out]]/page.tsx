@@ -1,3 +1,4 @@
+'use client';
 import { useClerk } from "@clerk/clerk-react";
 import { useRouter } from 'next/navigation'
  
