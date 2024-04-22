@@ -1,17 +1,14 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: "aideation-yt.firebaseapp.com",
-  projectId: "aideation-yt",
-  storageBucket: "aideation-yt.appspot.com",
-  messagingSenderId: "962348384448",
-  appId: "1:962348384448:web:e02758407aba3258d5ad25",
+  authDomain: "nova-notes-e5272.firebaseapp.com",
+  projectId: "nova-notes-e5272",
+  storageBucket: "nova-notes-e5272.appspot.com",
+  messagingSenderId: "262444280354",
+  appId: "1:262444280354:web:8f9132e49a436b7357387b"
 };
 
 // Initialize Firebase

@@ -20,7 +20,8 @@ const DashboardPage = async (props: Props) => {
     .from($notes)
     .where(eq($notes.userId, userId!));
 
-    const isDarkTheme = true; 
+  // Determine the theme
+  const isDarkTheme = true; 
 
   return (
     <>
@@ -31,7 +32,7 @@ const DashboardPage = async (props: Props) => {
           <div className="flex justify-between items-center md:flex-row flex-col">
             <div className="flex items-center">
               <Link href="/">
-                <Button className="bg-green-600" size="sm">
+                <Button className='green-600' size="sm">
                   <ArrowLeft className="mr-1 w-4 h-4" />
                   Back
                 </Button>
@@ -50,7 +51,7 @@ const DashboardPage = async (props: Props) => {
           {/* if no notes, display this */}
           {notes.length === 0 && (
             <div className="text-center">
-              <h2 className="text-xl text-gray-500">You have no notes yet.</h2>
+              <h2 className={`text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-500'}`}>You have no notes yet.</h2>
             </div>
           )}
 
@@ -60,7 +61,7 @@ const DashboardPage = async (props: Props) => {
             {notes.map((note) => {
               return (
                 <a href={`/notebook/${note.id}`} key={note.id}>
-                  <div className="border border-stone-300 rounded-lg overflow-hidden flex flex-col hover:shadow-xl transition hover:-translate-y-1">
+                  <div className={`border ${isDarkTheme ? 'border-gray-700' : 'border-stone-300'} rounded-lg overflow-hidden flex flex-col hover:shadow-xl transition hover:-translate-y-1`}>
                     <Image
                       width={400}
                       height={200}
@@ -68,11 +69,11 @@ const DashboardPage = async (props: Props) => {
                       src={note.imageUrl || ""}
                     />
                     <div className="p-4">
-                      <h3 className="text-xl font-semibold text-gray-900">
+                      <h3 className={`text-xl font-semibold ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>
                         {note.name}
                       </h3>
                       <div className="h-1"></div>
-                      <p className="text-sm text-gray-500">
+                      <p className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-500'}`}>
                         {new Date(note.createdAt).toLocaleDateString()}
                       </p>
                     </div>
