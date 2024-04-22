@@ -1,3 +1,4 @@
+'use client';
 import TypewriterTitle from "@/components/ui/TypewriterTitle";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
@@ -5,8 +6,17 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import FAQSection from "@/components/FAQSection";
+import { useTheme } from "next-themes";
+import React from "react";
 
 export default function Home() {
+  const { setTheme } = useTheme();
+
+  // Set the theme to "light" when the component mounts
+  React.useEffect(() => {
+    setTheme("light");
+  }, []);
+
   return (
     <div className="">
       <Navbar />

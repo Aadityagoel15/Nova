@@ -21,10 +21,11 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
 
   const glassmorphismStyle = {
-    backgroundColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.5)',
-    backdropFilter: theme === 'dark' ? 'blur(8px)' : 'blur(10px)',
+    backgroundColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 1)',
+    backdropFilter: theme === 'dark' ? 'blur(8px)' : 'blur(15px)',
   };
 
   return (
