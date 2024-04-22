@@ -20,9 +20,11 @@ const DashboardPage = async (props: Props) => {
     .from($notes)
     .where(eq($notes.userId, userId!));
 
+    const isDarkTheme = true; 
+
   return (
     <>
-      <div className="min-h-screen">
+      <div className={`min-h-screen ${isDarkTheme ? 'dark' : ''}`}>
         <Navbar/>
         <div className="max-w-7xl mx-auto p-10">
           <div className="h-14"></div>
@@ -35,7 +37,7 @@ const DashboardPage = async (props: Props) => {
                 </Button>
               </Link>
               <div className="w-4"></div>
-              <h1 className="text-3xl font-bold text-gray-900">My Notes</h1>
+              <h1 className={`text-3xl font-bold ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>My Notes</h1>
               <div className="w-4"></div>
               <UserButton />
             </div>
