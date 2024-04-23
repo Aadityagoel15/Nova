@@ -40,7 +40,7 @@ Project is created with:
 To run this project, install it locally using npm:
 
 ```
-$ cd ai-notes
+$ cd nova-notes
 $ npm install
 ```
 Rename the .env.example to .env
