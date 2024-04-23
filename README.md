@@ -1,6 +1,6 @@
 # Nova
 
-![alt text](image.png)
+![alt text](image-1.png)
 
 ## Description
 
@@ -9,6 +9,8 @@ Nova is an AI notes taking assistant web application that simplifies note-taking
 <!-- Add project features is My AI -->
 
 ## Features
+
+![alt text](image-2.png)
 
 - Auto-completion for note-taking using OpenAI's GPT-4 API
 - Generate thumbnail images to complement your notes
